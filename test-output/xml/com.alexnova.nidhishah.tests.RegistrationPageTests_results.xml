@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ChromeTest"
+           tests="8"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="222.882">
+    <properties></properties>
+
+
+
+            <testcase
+                name="tc0003_InvalidEmailValidationTest"
+                time="29.213"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0001_NewUserRegistrationPageTest"
+                time="3.552"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0002_RegisterNewUserTest"
+                time="43.524"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0003_InvalidEmailValidationTest"
+                time="30.748"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0003_InvalidEmailValidationTest"
+                time="29.489"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0003_InvalidEmailValidationTest"
+                time="28.956"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0005_InvalidPasswordTest"
+                time="28.519"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+            <testcase
+                name="tc0004_MandatoryFieldsTest"
+                time="28.881"
+                classname="com.alexnova.nidhishah.tests.RegistrationPageTests">
+            </testcase>
+</testsuite>

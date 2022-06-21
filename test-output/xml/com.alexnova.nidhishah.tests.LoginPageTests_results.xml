@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ChromeTest"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="73.591">
+    <properties></properties>
+
+
+
+            <testcase
+                name="tc0007_LoginNegativeTesting"
+                time="24.314"
+                classname="com.alexnova.nidhishah.tests.LoginPageTests">
+            </testcase>
+            <testcase
+                name="tc0006_LoginPositiveTesting"
+                time="49.277"
+                classname="com.alexnova.nidhishah.tests.LoginPageTests">
+            </testcase>
+</testsuite>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ChromeTest"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="34.899">
+    <properties></properties>
+
+
+
+            <testcase
+                name="tc0013_IncreaseQuantityTest"
+                time="5.333"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0010_ProductPagePricesPositiveTest"
+                time="11.081"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0014_FinalAmountUpdatesTest"
+                time="0.047"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0012_RefreshCartTest"
+                time="3.091"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0011_ProductAddedToCartTest"
+                time="10.017"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0015_RemoveProductFromCartTest"
+                time="5.330"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+</testsuite>
