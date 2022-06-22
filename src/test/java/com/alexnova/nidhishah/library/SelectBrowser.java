@@ -13,9 +13,6 @@ public class SelectBrowser {
 
     static private WebDriver driver;
 
-//    public  String getBrowserInfo(){
-//        return
-//    }
 
     public static WebDriver StartBrowser(String browsername)
     {
