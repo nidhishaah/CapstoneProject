@@ -4,29 +4,29 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="91.516">
+           time="93.666">
     <properties></properties>
 
 
 
             <testcase
-                name="tc0018_CCMandatoryFieldValidation"
-                time="5.480"
-                classname="com.alexnova.nidhishah.tests.CheckoutTests">
-            </testcase>
-            <testcase
                 name="tc0019_SuccessfulCheckoutTest"
-                time="16.395"
-                classname="com.alexnova.nidhishah.tests.CheckoutTests">
-            </testcase>
-            <testcase
-                name="tc0016_ApplyDiscountCodeTest"
-                time="43.448"
+                time="31.188"
                 classname="com.alexnova.nidhishah.tests.CheckoutTests">
             </testcase>
             <testcase
                 name="tc0017_PaymentModeCheck"
-                time="26.193"
+                time="22.414"
+                classname="com.alexnova.nidhishah.tests.CheckoutTests">
+            </testcase>
+            <testcase
+                name="tc0018_CCMandatoryFieldValidation"
+                time="3.778"
+                classname="com.alexnova.nidhishah.tests.CheckoutTests">
+            </testcase>
+            <testcase
+                name="tc0016_ApplyDiscountCodeTest"
+                time="36.286"
                 classname="com.alexnova.nidhishah.tests.CheckoutTests">
             </testcase>
 </testsuite>

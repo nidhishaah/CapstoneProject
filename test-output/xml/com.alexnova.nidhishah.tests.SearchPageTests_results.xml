@@ -4,19 +4,19 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="11.125">
+           time="6.309">
     <properties></properties>
 
 
 
             <testcase
-                name="tc0008_SearchBoxPositiveTest"
-                time="5.832"
+                name="tc0009_SearchBoxEmptyTest"
+                time="3.187"
                 classname="com.alexnova.nidhishah.tests.SearchPageTests">
             </testcase>
             <testcase
-                name="tc0009_SearchBoxEmptyTest"
-                time="5.293"
+                name="tc0008_SearchBoxPositiveTest"
+                time="3.122"
                 classname="com.alexnova.nidhishah.tests.SearchPageTests">
             </testcase>
 </testsuite>
