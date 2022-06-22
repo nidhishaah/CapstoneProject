@@ -88,7 +88,7 @@ public class RegistrationPageTests extends BaseTest{
         Thread.sleep(1000);
         registerPage.fillLastNameField("Fink");
         Thread.sleep(1000);
-        registerPage.fillEMailField("john.fink1983@gmail.com");
+        registerPage.fillEMailField("john.fink1984@gmail.com");
         Thread.sleep(1000);
         registerPage.fillPasswordField("P@ssword");
         Thread.sleep(1000);
@@ -98,7 +98,7 @@ public class RegistrationPageTests extends BaseTest{
         test.log(Status.INFO,"Clicked on Register button");
 
         driver.get("https://www.alexandnova.com/account/login");
-        loginPage.enterEmail("john.fink1983@gmail.com");
+        loginPage.enterEmail("john.fink1984@gmail.com");
         loginPage.enterPassword("P@ssword");
         test.log(Status.INFO,"Entered Login info on login screen");
 
@@ -183,7 +183,7 @@ public class RegistrationPageTests extends BaseTest{
         registerPage = new RegisterPage(driver);
         registerPage.fillFirstNameField("John");
         registerPage.fillLastNameField("Fink");
-        registerPage.fillEMailField("john.fink1983@gmail.com");
+        registerPage.fillEMailField("john.fink1981@gmail.com");
         registerPage.fillPasswordField("pass");
         test.log(Status.INFO,"Entered all 4 fields,password does not satisfy the password rules");
 
