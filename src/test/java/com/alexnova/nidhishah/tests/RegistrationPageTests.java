@@ -99,7 +99,7 @@ public class RegistrationPageTests extends BaseTest{
 
         registerPage.fillLastNameField("Fink");
 
-        registerPage.fillEMailField("john.fink1984@gmail.com");
+        registerPage.fillEMailField("john.fink1981@gmail.com");
 
         registerPage.fillPasswordField("P@ssword");
 
@@ -109,7 +109,7 @@ public class RegistrationPageTests extends BaseTest{
         test.log(Status.INFO,"Clicked on Register button");
 
         driver.get("https://www.alexandnova.com/account/login");
-        loginPage.enterEmail("john.fink1984@gmail.com");
+        loginPage.enterEmail("john.fink1981@gmail.com");
         loginPage.enterPassword("P@ssword");
         test.log(Status.INFO,"Entered Login info on login screen");
 

@@ -53,9 +53,10 @@ public class LoginPage {
     }
 
     By errorMsg = By.xpath("//*[@id='customer_login']/p");
-    public String getErrorMsg(){
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMsg)));
+    public String getErrorMsg() throws InterruptedException {
+//        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMsg)));
+        //Thread.sleep(2000);
         return driver.findElement(errorMsg).getText();
     }
 

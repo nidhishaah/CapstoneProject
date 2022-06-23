@@ -4,19 +4,19 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="47.621">
+           time="50.147">
     <properties></properties>
 
 
 
             <testcase
-                name="tc0007_LoginNegativeTesting"
-                time="23.860"
+                name="tc0006_LoginPositiveTesting"
+                time="25.995"
                 classname="com.alexnova.nidhishah.tests.LoginPageTests">
             </testcase>
             <testcase
-                name="tc0006_LoginPositiveTesting"
-                time="23.761"
+                name="tc0007_LoginNegativeTesting"
+                time="24.152"
                 classname="com.alexnova.nidhishah.tests.LoginPageTests">
             </testcase>
 </testsuite>

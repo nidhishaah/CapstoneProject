@@ -4,39 +4,39 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="27.007">
+           time="21.957">
     <properties></properties>
 
 
 
             <testcase
-                name="tc0015_RemoveProductFromCartTest"
-                time="5.125"
-                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
-            </testcase>
-            <testcase
                 name="tc0012_RefreshCartTest"
-                time="3.068"
-                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
-            </testcase>
-            <testcase
-                name="tc0010_ProductPagePricesPositiveTest"
-                time="5.887"
+                time="3.079"
                 classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
             </testcase>
             <testcase
                 name="tc0013_IncreaseQuantityTest"
-                time="4.205"
-                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
-            </testcase>
-            <testcase
-                name="tc0011_ProductAddedToCartTest"
-                time="8.701"
+                time="1.311"
                 classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
             </testcase>
             <testcase
                 name="tc0014_FinalAmountUpdatesTest"
-                time="0.021"
+                time="0.030"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0011_ProductAddedToCartTest"
+                time="9.127"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0010_ProductPagePricesPositiveTest"
+                time="6.100"
+                classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
+            </testcase>
+            <testcase
+                name="tc0015_RemoveProductFromCartTest"
+                time="2.310"
                 classname="com.alexnova.nidhishah.tests.ProductAddTOCartTests">
             </testcase>
 </testsuite>

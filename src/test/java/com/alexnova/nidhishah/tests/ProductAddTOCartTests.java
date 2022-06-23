@@ -86,11 +86,11 @@ Assertion is on verifying a valid price.
         test.log(Status.INFO,"Select color of shoes");
 
         productsPage.clickAddToCart();
-        //Thread.sleep(5000);
+        Thread.sleep(5000);
         test.log(Status.INFO,"Add product to cart");
 
         cartPage = productsPage.clickCart();
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
 
         String productIncart = cartPage.getProductDescription();
         test.log(Status.INFO,"Product description in cart="+productIncart);

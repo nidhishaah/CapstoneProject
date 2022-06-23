@@ -19,9 +19,10 @@ public class AccountPage {
     }
 
     By heading = By.xpath("*//div[@id='keyboard-nav-3']/h1");
-    public String getHeading(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(heading));
+    public String getHeading() throws InterruptedException {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(heading));
+        Thread.sleep(2000);
         return driver.findElement(heading).getText();
     }
 
