@@ -16,6 +16,11 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
+/*
+This Class has all test cases for registration page.
+It contains TC0001 to TC0005
+The TC0003 is implemented using Data Provider.
+ */
 
 public class RegistrationPageTests extends BaseTest{
 
@@ -24,7 +29,6 @@ public class RegistrationPageTests extends BaseTest{
     LoginPage loginPage;
     RegisterPage registerPage;
     AccountPage accountPage;
-
 
     @BeforeMethod
     @Parameters("browserName")
@@ -50,6 +54,10 @@ public class RegistrationPageTests extends BaseTest{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
+    /*
+    This test case verifies if we can successfully navigate to the registration form.
+    Assertion is on the title of the registration page
+     */
     @Test(priority = 1)
     public void tc0001_NewUserRegistrationPageTest(Method method)
     {
@@ -72,26 +80,29 @@ public class RegistrationPageTests extends BaseTest{
 
     }
 
-
+/*
+    This test case verifies a scenario of successful registration by entering valid data
+    Assertion is on the welcome message when we login after registration
+ */
     @Test(priority=2,enabled = true)
     public void tc0002_RegisterNewUserTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
 
         homePage = new HomePage(driver);
-        //  homePage.iframeShown();
+
         loginPage = homePage.clickAccount();
         test.log(Status.INFO,"Click on Account Button");
 
         registerPage = loginPage.clickRegister();
         test.log(Status.INFO,"Click on Register button");
         registerPage.fillFirstNameField("John");
-        Thread.sleep(1000);
+
         registerPage.fillLastNameField("Fink");
-        Thread.sleep(1000);
+
         registerPage.fillEMailField("john.fink1984@gmail.com");
-        Thread.sleep(1000);
+
         registerPage.fillPasswordField("P@ssword");
-        Thread.sleep(1000);
+
         test.log(Status.INFO,"Entered all 4 input data required");
 
         loginPage = registerPage.clickRegisterButton();
@@ -104,6 +115,7 @@ public class RegistrationPageTests extends BaseTest{
 
         accountPage = loginPage.clickLogin();
         test.log(Status.INFO,"Clicked on Login Button");
+        //This wait is for ReCAPTCHA
         Thread.sleep(20000);
 
         String welcomeMsg = accountPage.getHeading();
@@ -112,6 +124,7 @@ public class RegistrationPageTests extends BaseTest{
 
     }
 
+    //This is for test case0003.
     @DataProvider(name = "test-data")
     public Object[][] dataProvFunc(){
         return new Object[][]{
@@ -119,7 +132,11 @@ public class RegistrationPageTests extends BaseTest{
         };
     }
 
-
+/*
+This test case verifies unsuccessful registration when we enter an invalid email ID.
+Since we verify we 4 different email ID we use parameterized testing here with help of DATA Provider.
+ Assertion is on error message shown
+ */
     @Test(priority = 3,dataProvider ="test-data",enabled = true)
     public void tc0003_InvalidEmailValidationTest(Method method,String email) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -127,16 +144,17 @@ public class RegistrationPageTests extends BaseTest{
         driver.get("https://www.alexandnova.com/account/register");
         registerPage = new RegisterPage(driver);
         registerPage.fillFirstNameField("John");
-        Thread.sleep(1000);
+
         registerPage.fillLastNameField("Fink");
-        Thread.sleep(1000);
+
         registerPage.fillEMailField(email);
-        Thread.sleep(1000);
+
         registerPage.fillPasswordField("P@ssword");
-        Thread.sleep(1000);
+
         test.log(Status.INFO,"Entered all 4 field, entered invalid email during registration");
 
         loginPage = registerPage.clickRegisterButton();
+        //This wait is for ReCAPTCHA
         Thread.sleep(20000);
         test.log(Status.INFO,"Clicked on Register button");
 
@@ -144,9 +162,13 @@ public class RegistrationPageTests extends BaseTest{
         System.out.println(error);
         Assert.assertTrue(error.contains("Sorry! Please try that again."));
         test.log(Status.PASS,"Asserted on error message received");
-     //   accountPage.logout();
+
     }
 
+    /*
+    This test case verifies unsuccessful registration on leaving out the mandatory fields in registration form.
+    Assertion is on error message shown
+     */
     @Test(priority = 4,enabled = true)
     public void tc0004_MandatoryFieldsTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -156,16 +178,17 @@ public class RegistrationPageTests extends BaseTest{
 
         registerPage = new RegisterPage(driver);
         registerPage.fillFirstNameField("John");
-        Thread.sleep(1000);
+
         registerPage.fillLastNameField("Fink");
-        Thread.sleep(1000);
+
         registerPage.fillEMailField("");
-        Thread.sleep(1000);
+
         registerPage.fillPasswordField("");
-        Thread.sleep(1000);
+
         test.log(Status.INFO,"Entered all 4 fields as empty");
 
         loginPage = registerPage.clickRegisterButton();
+        //This wait for ReCAPTCHA
         Thread.sleep(20000);
         test.log(Status.INFO,"Clicked on Register button");
         String error = loginPage.getErrorMsg();
@@ -173,6 +196,10 @@ public class RegistrationPageTests extends BaseTest{
         test.log(Status.PASS,"Asserted on error message received");
     }
 
+    /*
+    This test verifies unsuccessful registration when we enter a password less than 5 characters long.
+    Assertion is on error message shown
+     */
     @Test(priority = 5,enabled = true)
     public void tc0005_InvalidPasswordTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -188,6 +215,7 @@ public class RegistrationPageTests extends BaseTest{
         test.log(Status.INFO,"Entered all 4 fields,password does not satisfy the password rules");
 
         loginPage = registerPage.clickRegisterButton();
+        //This wait is for reCAPTCHA
         Thread.sleep(20000);
         test.log(Status.INFO,"Clicked on Register button");
         String error = loginPage.getErrorMsg();
@@ -205,6 +233,7 @@ public class RegistrationPageTests extends BaseTest{
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             Files.move(screenshot,new File(System.getProperty("user.dir")+"/test-output/screenshots/"+result.getName()+"failure.png"));
             test.addScreenCaptureFromPath(result.getName()+"failure.png");
+            test.fail("Test failed");
         }
         else if (result.getStatus() == ITestResult.SKIP) {
             test.skip(result.getThrowable());
@@ -220,10 +249,10 @@ public class RegistrationPageTests extends BaseTest{
 
     }
 
-//    @AfterClass
-//    public void closeBrowser(){
-//        driver.quit();
-//    }
+    @AfterClass
+    public void closeBrowser(){
+        driver.quit();
+    }
 
 
 }

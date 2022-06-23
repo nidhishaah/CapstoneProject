@@ -3,6 +3,10 @@ package com.alexnova.nidhishah.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+/*
+The Register Page has the registration form to register a customer.
+This Class has all interactions and actions with the Register page.
+ */
 public class RegisterPage {
     WebDriver driver;
 

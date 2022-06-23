@@ -14,20 +14,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Arrays;
-
+/*
+This Class contains all test in Search Page.
+This test contains TC0008 to TC0009
+ */
 public class SearchPageTests extends BaseTest{
 
     WebDriver driver;
     HomePage homePage;
     SearchPage searchPage;
-    LoginPage loginPage;
-    AccountPage accountPage;
 
     @BeforeMethod
     @Parameters("browserName")
@@ -44,6 +43,10 @@ public class SearchPageTests extends BaseTest{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
+    /*
+    This test case verifies if a valid search page is shown for a valid search query
+    Assertion is on number of search results shown
+     */
     @Test(priority = 8)
     public void tc0008_SearchBoxPositiveTest(Method method){
 
@@ -65,6 +68,10 @@ public class SearchPageTests extends BaseTest{
         test.log(Status.PASS,"Assert more than 0 search result received");
     }
 
+    /*
+    This test case verifies an empty search query
+    Assertion is on error message received
+     */
     @Test(priority = 9)
     public void tc0009_SearchBoxEmptyTest(Method method){
 
@@ -92,6 +99,7 @@ public class SearchPageTests extends BaseTest{
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             Files.move(screenshot,new File(System.getProperty("user.dir")+"/test-output/screenshots/"+result.getName()+"failure.png"));
             test.addScreenCaptureFromPath(result.getName()+"failure.png");
+            test.fail("test failed");
         }
         else if (result.getStatus() == ITestResult.SKIP) {
             test.skip(result.getThrowable());

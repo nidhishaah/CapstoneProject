@@ -13,7 +13,10 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
-
+/*
+This class contains all test cases in the LoginPage
+This contains TC0006 - TC0007
+ */
 public class LoginPageTests extends BaseTest{
     WebDriver driver;
     LoginPage loginPage;
@@ -24,6 +27,7 @@ public class LoginPageTests extends BaseTest{
     public void SetUp(String browserName){
         driver = SelectBrowser.StartBrowser(browserName);
         driver.manage().deleteAllCookies();
+
         if(browserName.equals("Chrome")) {
             driver.get("chrome://settings/clearBrowserData");
             driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
@@ -33,7 +37,10 @@ public class LoginPageTests extends BaseTest{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
-
+/*
+This test case validate a scenario of successful login
+Assertion is on the welcome message got in dashboard
+ */
     @Test(priority = 6)
     public void tc0006_LoginPositiveTesting(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -47,6 +54,7 @@ public class LoginPageTests extends BaseTest{
 
         accountPage = loginPage.clickLogin();
         test.log(Status.INFO,"Clicked on Login Button");
+        //This wait is for ReCAPTCHA
         Thread.sleep(20000);
 
         String welcomeMsg = accountPage.getHeading();
@@ -54,6 +62,10 @@ public class LoginPageTests extends BaseTest{
         test.log(Status.PASS,"Asserted on login message");
     }
 
+    /*
+    This test case is for negative testing for login.We enter invalid email ID and valid password.
+    The Assertion is on error message received after login.
+     */
     @Test(priority = 7)
     public void tc0007_LoginNegativeTesting(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -67,15 +79,13 @@ public class LoginPageTests extends BaseTest{
 
         accountPage = loginPage.clickLogin();
         test.log(Status.INFO,"Clicked on Login Button");
+        //This wait is for ReCAPTCHA
         Thread.sleep(20000);
 
         String errorMsg = loginPage.getErrorMsg();
         Assert.assertEquals(errorMsg,"Sorry! Please try that again.");
         test.log(Status.PASS,"Asserted on the error message");
     }
-
-
-
 
     @AfterMethod
     public void afterMethod(ITestResult result) throws IOException {
@@ -86,6 +96,7 @@ public class LoginPageTests extends BaseTest{
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             Files.move(screenshot,new File(System.getProperty("user.dir")+"/test-output/screenshots/"+result.getName()+"failure.png"));
             test.addScreenCaptureFromPath(result.getName()+"failure.png");
+            test.fail("Test failed");
         }
         else if (result.getStatus() == ITestResult.SKIP) {
             test.skip(result.getThrowable());
@@ -99,7 +110,5 @@ public class LoginPageTests extends BaseTest{
         }
         driver.quit();
     }
-
-
 
 }

@@ -1,12 +1,13 @@
 package com.alexnova.nidhishah.pages;
 
-import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Set;
-
+/*
+This Page comes when we hit the Checkout button on Cart page.
+The Checkout page shows all interactions and actions on the Checkout Page Series.
+ */
 public class CheckoutPage {
 
     WebDriver driver;
@@ -38,17 +39,18 @@ public class CheckoutPage {
     By firstName = By.id("checkout_shipping_address_first_name");
     By lastName = By.id("checkout_shipping_address_last_name");
 
+    //This method fills the address details on Checkout Page
     public void fillAddress() throws InterruptedException {
         driver.findElement(emailID).sendKeys("john.fink1981@gmail.com");
-        Thread.sleep(2000);
+        Thread.sleep(500);
         driver.findElement(firstName).sendKeys("John");
-        Thread.sleep(2000);
+        Thread.sleep(500);
         driver.findElement(lastName).sendKeys("Fink");
-        Thread.sleep(2000);
+
         driver.findElement(addressField).sendKeys("Main st 123");
-        Thread.sleep(2000);
+
         driver.findElement(cityField).sendKeys("Superior");
-        Thread.sleep(2000);
+
         driver.findElement(zipField).sendKeys("80027");
     }
 
@@ -119,30 +121,34 @@ public class CheckoutPage {
       return  driver.findElement(noticeText).getText();
     }
 
+//This Method switches between all 4 frames present in the Credit card fields.
+    By numberFrame = By.xpath("*//iframe[contains(@id,'card-fields-number')]");
+    By nameFrame = By.xpath("*//iframe[contains(@id,'card-fields-name')]");
+    By expiryFrame = By.xpath("*//iframe[contains(@id,'card-fields-expiry')]");
+    By codeFrame = By.xpath("*//iframe[contains(@id,'card-fields-verification_value')]");
 
     public void switchWindow() throws InterruptedException {
-
-        By numberFrame = By.xpath("*//iframe[contains(@id,'card-fields-number')]");
 
         driver.switchTo().frame(driver.findElement(numberFrame));
         fillNumber();
         driver.switchTo().parentFrame();
-        Thread.sleep(3000);
-        By nameFrame = By.xpath("*//iframe[contains(@id,'card-fields-name')]");
+        Thread.sleep(500);
+
+
         driver.switchTo().frame(driver.findElement(nameFrame));
         fillName();
         driver.switchTo().parentFrame();
+        Thread.sleep(500);
 
-        Thread.sleep(3000);
-        By expiryFrame = By.xpath("*//iframe[contains(@id,'card-fields-expiry')]");
+
         driver.switchTo().frame(driver.findElement(expiryFrame));
         fillExpiry();
         driver.switchTo().parentFrame();
-        Thread.sleep(3000);
-        By codeFrame = By.xpath("*//iframe[contains(@id,'card-fields-verification_value')]");
+        Thread.sleep(500);
+
         driver.switchTo().frame(driver.findElement(codeFrame));
         fillCode();
         driver.switchTo().parentFrame();
-        Thread.sleep(3000);
+
     }
 }

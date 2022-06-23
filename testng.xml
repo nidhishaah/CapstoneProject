@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-
 <suite name="suite" > <!--thread-count="2" parallel="tests"-->
     <test name="ChromeTest">
         <parameter name="browserName" value="Chrome"></parameter>
@@ -12,29 +11,24 @@
             <class name="com.alexnova.nidhishah.tests.CheckoutTests"></class>
         </classes>
     </test>
-
-<!--    <test name="FireFox Test">-->
+<!--   <test name="FireFoxTest">-->
 <!--        <parameter name="browserName" value="Firefox"></parameter>-->
-<!--         <classes>
-            <class name="com.alexnova.nidhishah.tests.RegistrationPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.LoginPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.SearchPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.ProductAddTOCartTests"></class>
-            <class name="com.alexnova.nidhishah.tests.CheckoutTests"></class>
-        </classes>
-    </test>-->
+<!--         <classes>-->
+<!--            <class name="com.alexnova.nidhishah.tests.RegistrationPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.LoginPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.SearchPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.ProductAddTOCartTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.CheckoutTests"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 <!--    <test name="EdgeTest">-->
-
 <!--        <parameter name="browserName" value="EdgeExplore" />-->
-
-<!--        <classes>
-            <class name="com.alexnova.nidhishah.tests.RegistrationPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.LoginPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.SearchPageTests"></class>
-            <class name="com.alexnova.nidhishah.tests.ProductAddTOCartTests"></class>
-            <class name="com.alexnova.nidhishah.tests.CheckoutTests"></class>
-        </classes>
-
-    </test>-->
-
+<!--        <classes>-->
+<!--            <class name="com.alexnova.nidhishah.tests.RegistrationPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.LoginPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.SearchPageTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.ProductAddTOCartTests"></class>-->
+<!--            <class name="com.alexnova.nidhishah.tests.CheckoutTests"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

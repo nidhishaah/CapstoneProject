@@ -5,11 +5,9 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-import java.util.Set;
 
 public class BaseTest {
 
@@ -23,10 +21,8 @@ public class BaseTest {
     @BeforeSuite
     public void setUpReport(){
 
-        //create the HtmlReporter in that path by the name of  MyOwnReport.html
+        //create the HtmlReporter in that path by the name of  CapstoneReport_NidhiShah.html
         htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/screenshots/CapstoneReport_NidhiShah.html");
-//        htmlReporter =
-//                new ExtentHtmlReporter("C:\\Users\\nidhi\\Documents\\ActivateIT\\Week 14-Selenium\\Shah_Nidhi_Capstone_AlexnNova\\test-output\\screenshots\\CapstoneReport_NidhiShah.html");
         extent = new ExtentReports();
 
         extent.attachReporter(htmlReporter);
@@ -44,10 +40,5 @@ public class BaseTest {
     @AfterSuite
     public void tearDown(){
         extent.flush();
-        //driver.quit();
-    }
-
-
-
-
+       }
 }

@@ -4,24 +4,25 @@ import com.alexnova.nidhishah.library.SelectBrowser;
 import com.alexnova.nidhishah.pages.*;
 import com.aventstack.extentreports.Status;
 import com.google.common.io.Files;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
+
+/*
+This Class has all Test cases regarding Checkout Page.
+Contains TC0016 to TC0019
+ */
 
 public class CheckoutTests extends BaseTest{
 
     WebDriver driver;
     HomePage homePage;
     SearchPage searchPage;
-    LoginPage loginPage;
-    AccountPage accountPage;
     ProductsPage productsPage;
     CartPage cartPage;
     CheckoutPage checkoutPage;
@@ -43,21 +44,15 @@ public class CheckoutTests extends BaseTest{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
+    /*
+    This test case applies Discount and checks if it deducts amount from final price
+    Assertion is on Discount value received.
+     */
     @Test(priority = 16)
     public void tc0016_ApplyDiscountCodeTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
 
         homePage = new HomePage(driver);
-//        loginPage = homePage.clickAccount();
-//        loginPage.enterEmail("john.fink1981@gmail.com");
-//        Thread.sleep(2000);
-//        loginPage.enterPassword("P@ssword");
-//        Thread.sleep(2000);
-//        test.log(Status.INFO,"Entered Login info on login screen");
-//
-//        accountPage = loginPage.clickLogin();
-//        Thread.sleep(20000);
-//        homePage =accountPage.clickHomeButton();
         searchPage = homePage.enterSearch("baby shoes");
         test.log(Status.INFO,"Search product");
         productsPage = searchPage.clickOnStripedShoes();
@@ -65,15 +60,13 @@ public class CheckoutTests extends BaseTest{
         productsPage.selectColor();
         productsPage.clickAddToCart();
         test.log(Status.INFO,"Add product to cart");
-        Thread.sleep(5000);
         cartPage = productsPage.clickCart();
-        Thread.sleep(2000);
         test.log(Status.INFO,"Click Checkout");
         checkoutPage = cartPage.clickCheckout();
         checkoutPage.enterDiscount();
         test.log(Status.INFO,"Enter Discount");
         Thread.sleep(5000);
-      //  checkoutPage.clickApply();
+
         double discount = Double.parseDouble(checkoutPage.getDiscountValue().substring(3));
         Assert.assertTrue(discount > 0);
         test.log(Status.PASS,"Discount is greater than 0");
@@ -81,6 +74,10 @@ public class CheckoutTests extends BaseTest{
     }
 
 
+    /*
+    This test case checks if three modes of payment available:Credit card , Shop pay and pay pal
+     Assertion is on text got from 3 payment fields in checkout page after filling address details.
+     */
     @Test(priority = 17 )
     public void tc0017_PaymentModeCheck(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -102,6 +99,10 @@ public class CheckoutTests extends BaseTest{
 
     }
 
+    /*
+    This test case validates if any mandatory fields in the Credit card area.
+    Assertion is on the error messages received after we leave the credit card field empty and try to check out.
+    */
     @Test(priority = 18)
     public void tc0018_CCMandatoryFieldValidation(Method method){
         test = extent.createTest(method.getName(), "Running test ...");
@@ -119,6 +120,10 @@ public class CheckoutTests extends BaseTest{
         test.log(Status.PASS,"Asserted on all validation errors");
     }
 
+    /*
+    This test case verifies if we get the correct error message when entered wrong credit card info
+    Asserting is on the error message received when credit card info entered and pressed the pay now button.
+     */
     @Test(priority = 19)
     public void tc0019_SuccessfulCheckoutTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -144,6 +149,7 @@ public class CheckoutTests extends BaseTest{
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             Files.move(screenshot,new File(System.getProperty("user.dir")+"/test-output/screenshots/"+result.getName()+"failure.png"));
             test.addScreenCaptureFromPath(result.getName()+"failure.png");
+            test.fail("Test Failed");
         }
         else if (result.getStatus() == ITestResult.SKIP) {
             test.skip(result.getThrowable());
@@ -159,8 +165,7 @@ public class CheckoutTests extends BaseTest{
 
     @AfterClass
     public void tearDown(){
-        // extent.flush();
-        driver.quit();
+      driver.quit();
     }
 
 }

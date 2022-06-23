@@ -14,13 +14,14 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
-
+/*
+This Class has all test cases when product is added to the Cart.
+This class has test cases TC0010 to TC0015
+ */
 public class ProductAddTOCartTests extends BaseTest{
     WebDriver driver;
     HomePage homePage;
     SearchPage searchPage;
-    LoginPage loginPage;
-    AccountPage accountPage;
     ProductsPage productsPage;
     CartPage cartPage;
     private double priceInt;
@@ -40,21 +41,16 @@ public class ProductAddTOCartTests extends BaseTest{
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
-
+/*
+This test case verifies if the product page shows product price.
+Assertion is on verifying a valid price.
+ */
     @Test(priority = 10)
     public void tc0010_ProductPagePricesPositiveTest(Method method) throws InterruptedException {
 
         test = extent.createTest(method.getName(), "Running test ...");
         homePage = new HomePage(driver);
 
-//        loginPage = homePage.clickAccount();
-//        loginPage.enterEmail("john.fink1981@gmail.com");
-//        loginPage.enterPassword("P@ssword");
-//        test.log(Status.INFO,"Entered Login info on login screen");
-//
-//        accountPage = loginPage.clickLogin();
-//        Thread.sleep(20000);
-//        homePage =accountPage.clickHomeButton();
         searchPage = homePage.enterSearch("baby shoes");
         test.log(Status.INFO,"Entered 'baby shoes' in search field");
 
@@ -74,6 +70,10 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.PASS,"Assert on price of product shown");
    }
 
+   /*
+   This test case verifies if a selected product can be successfully added to cart .
+   Assertion is on product description in cart
+    */
     @Test(priority = 11)
     public void tc0011_ProductAddedToCartTest(Method method) throws InterruptedException {
 
@@ -86,11 +86,11 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.INFO,"Select color of shoes");
 
         productsPage.clickAddToCart();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         test.log(Status.INFO,"Add product to cart");
 
         cartPage = productsPage.clickCart();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         String productIncart = cartPage.getProductDescription();
         test.log(Status.INFO,"Product description in cart="+productIncart);
@@ -100,6 +100,10 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.PASS,"Assert product available in cart");
     }
 
+    /*
+    This test case verifies if we refresh page and product remains in cart
+    Assertion is on product description in cart
+     */
     @Test(priority = 12)
     public void tc0012_RefreshCartTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -116,6 +120,11 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.PASS,"Assert product still available on cart");
     }
 
+    /*
+    This test case verifies if we can successfully increase quantity of product in cart.
+    Assertion is on quantity of product
+     */
+
     @Test(priority = 13)
     public void tc0013_IncreaseQuantityTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
@@ -128,18 +137,18 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.PASS,"Assert quantity in cart is 3");
         cartPage.clickUpdateCart();
         System.out.println(cartPage.getQuantity());
-        Thread.sleep(3000);
+
         test.log(Status.INFO,"Updated cart");
 
     }
 
+    /*
+    This test case verifies if final product updates when we increase the quantity
+    Assertion is on the final product
+     */
     @Test(priority = 14,dependsOnMethods = {"tc0010_ProductPagePricesPositiveTest"})
     public void tc0014_FinalAmountUpdatesTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
-       // Thread.sleep(3000);
-
-
-
         String finalPrice = cartPage.getFinalPrice();
         System.out.println(finalPrice);
         System.out.println(priceInt);
@@ -153,15 +162,17 @@ public class ProductAddTOCartTests extends BaseTest{
         test.log(Status.PASS,"Asserted on final price match expected price");
     }
 
+    /*
+    This test case test if we can successfully remove a product from the cart.
+    Assertion is on message saying no items in cart.
+     */
     @Test(priority = 15)
     public void tc0015_RemoveProductFromCartTest(Method method) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
         cartPage.increaseQuantity("0");
 
         test.log(Status.INFO,"Quantity changed to 0");
-        Thread.sleep(5000);
-   //     cartPage.clickUpdateCart();
-//        Thread.sleep(2000);
+        Thread.sleep(2000);
         String noItemMessage= cartPage.getNoItemMessage();
         test.log(Status.INFO,"Message given = "+noItemMessage);
 
@@ -181,6 +192,7 @@ public class ProductAddTOCartTests extends BaseTest{
             File screenshot = camera.getScreenshotAs(OutputType.FILE);
             Files.move(screenshot,new File(System.getProperty("user.dir")+"/test-output/screenshots/"+result.getName()+"failure.png"));
             test.addScreenCaptureFromPath(result.getName()+"failure.png");
+            test.fail("Test failed");
         }
         else if (result.getStatus() == ITestResult.SKIP) {
             test.skip(result.getThrowable());
@@ -196,7 +208,7 @@ public class ProductAddTOCartTests extends BaseTest{
 
     @AfterClass
     public void tearDown(){
-       // extent.flush();
+
         driver.quit();
     }
 }

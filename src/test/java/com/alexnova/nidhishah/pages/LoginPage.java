@@ -1,11 +1,17 @@
 package com.alexnova.nidhishah.pages;
 
-import com.alexnova.nidhishah.pages.RegisterPage;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
+/*
+Login Page CLass had all actions and interactions with the Login Page.
+This Page helps us to Login by giving the email and password.
+ */
 public class LoginPage {
     WebDriver driver;
 
@@ -20,12 +26,11 @@ public class LoginPage {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("scroll(0,500)");
 
-        System.out.println("Im here");
         driver.findElement(registerButton).click();
         return new RegisterPage(driver);
     }
 
-    By pageTitle = By.xpath("*//h1[@class='page-title']"); // Doesnt work in firefox
+    By pageTitle = By.xpath("*//h1[@class='page-title']");
     public String getTitle(){
         return driver.findElement(pageTitle).getText();
     }
@@ -49,6 +54,8 @@ public class LoginPage {
 
     By errorMsg = By.xpath("//*[@id='customer_login']/p");
     public String getErrorMsg(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMsg)));
         return driver.findElement(errorMsg).getText();
     }
 

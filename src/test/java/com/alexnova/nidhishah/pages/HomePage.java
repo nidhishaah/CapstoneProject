@@ -4,18 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Set;
-
+/*
+This Class is for the HomePage interaction and actions.
+ */
 public class HomePage {
     WebDriver driver;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
+
     By accountButton = By.linkText("Account");
-
-
-
 
     public LoginPage clickAccount(){
         driver.findElement(accountButton).click();

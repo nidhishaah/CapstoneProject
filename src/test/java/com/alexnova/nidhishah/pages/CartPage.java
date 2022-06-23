@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+/*
+This Page is shown when we click the cart(1) header.
+ This class shows all interaction with the Cart Page.
+ */
 public class CartPage {
 
     WebDriver driver;
@@ -13,7 +17,7 @@ public class CartPage {
     }
 
     By quantityField = By.xpath("//input[contains(@id,'updates')]");
-    //By quantity = By.cssSelector("#updates_40723160727605")
+
     public  void increaseQuantity(String arg){
         driver.findElement(quantityField).clear();
         driver.findElement(quantityField).sendKeys(arg+ Keys.ENTER);

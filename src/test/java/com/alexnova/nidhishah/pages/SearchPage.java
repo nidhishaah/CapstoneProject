@@ -3,6 +3,10 @@ package com.alexnova.nidhishah.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+/*
+This Page shows the search results on entering a search query on the home page.
+This Class has all actions and interactions with the search page.
+ */
 public class SearchPage {
 
     WebDriver driver;
