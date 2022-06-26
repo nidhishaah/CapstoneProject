@@ -101,7 +101,11 @@ public class CheckoutPage {
 
 
     public void fillNumber(){
-        driver.findElement(ccNumber).sendKeys("36985214769874");
+        driver.findElement(ccNumber).sendKeys("3698");
+        driver.findElement(ccNumber).sendKeys("5214");
+        driver.findElement(ccNumber).sendKeys("7698");
+        driver.findElement(ccNumber).sendKeys("74");
+
     }
     public void fillName(){
         driver.findElement(ccName).sendKeys("nidhi shah");
