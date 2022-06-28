@@ -140,29 +140,21 @@ Since we verify we 4 different email ID we use parameterized testing here with h
     @Test(priority = 3,dataProvider ="test-data",enabled = true)
     public void tc0003_InvalidEmailValidationTest(Method method,String email) throws InterruptedException {
         test = extent.createTest(method.getName(), "Running test ...");
-
         driver.get("https://www.alexandnova.com/account/register");
         registerPage = new RegisterPage(driver);
         registerPage.fillFirstNameField("John");
-
         registerPage.fillLastNameField("Fink");
-
         registerPage.fillEMailField(email);
-
         registerPage.fillPasswordField("P@ssword");
-
         test.log(Status.INFO,"Entered all 4 field, entered invalid email during registration");
-
         loginPage = registerPage.clickRegisterButton();
         //This wait is for ReCAPTCHA
         Thread.sleep(20000);
         test.log(Status.INFO,"Clicked on Register button");
-
         String error = loginPage.getErrorMsg();
         System.out.println(error);
         Assert.assertTrue(error.contains("Sorry! Please try that again."));
         test.log(Status.PASS,"Asserted on error message received");
-
     }
 
     /*

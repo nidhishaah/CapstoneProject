@@ -39,7 +39,7 @@ public class SelectBrowser {
         else if(browsername.equalsIgnoreCase("EdgeExplore"))
         {
             // Set the path for IEdriver
-            System.setProperty("webdriver.edge.driver", fileUrl+"\\src\\test\\resources\\drivers\\msedgedriver2.exe");
+            System.setProperty("webdriver.edge.driver", fileUrl+"\\src\\test\\resources\\drivers\\msedgedriver3.exe");
             // Instantiate a EdgeDriverclass.
             driver = new EdgeDriver();
         }

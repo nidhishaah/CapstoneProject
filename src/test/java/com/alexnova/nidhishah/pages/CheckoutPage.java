@@ -119,7 +119,8 @@ public class CheckoutPage {
     }
 
   //  By noticeText = By.cssSelector("body > div > div > div > main > div.step > div > form > div.section.section--payment-method > div.section__content > div:nth-child(2) > div > p")
-    By noticeText = By.xpath("*//div[@class='notice__content']/p[text()='Your payment details couldn’t be verified. Check your card details and try again.']");
+    By noticeText = By.xpath("*//div[@class='notice__content']/" +
+          "p[text()='Your payment details couldn’t be verified. Check your card details and try again.']");
     public String getNoticeText(){
       //  driver.switchTo().frame(driver.findElement(By.id("google-analytics-sandbox")));
       return  driver.findElement(noticeText).getText();

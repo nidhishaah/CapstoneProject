@@ -5,13 +5,13 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 
 public class BaseTest {
 
-    private WebDriver driver;
+    //private static WebDriver driver;
     private static ExtentHtmlReporter htmlReporter;
     protected static ExtentReports extent;
     protected static ExtentTest test;

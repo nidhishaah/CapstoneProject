@@ -65,7 +65,7 @@ public class CheckoutTests extends BaseTest{
         checkoutPage = cartPage.clickCheckout();
         checkoutPage.enterDiscount();
         test.log(Status.INFO,"Enter Discount");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         double discount = Double.parseDouble(checkoutPage.getDiscountValue().substring(3));
         Assert.assertTrue(discount > 0);
@@ -166,6 +166,7 @@ public class CheckoutTests extends BaseTest{
     @AfterClass
     public void tearDown(){
       driver.quit();
+      extent.flush();
     }
 
 }

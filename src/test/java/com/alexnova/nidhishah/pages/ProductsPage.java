@@ -29,11 +29,15 @@ public class ProductsPage {
 
     By sizeRadioButton = By.xpath("//*[@id=\"bcpo-select-option-0\"]/div[5]/label");
     public void selectSize(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(sizeRadioButton));
         driver.findElement(sizeRadioButton).click();
     }
 
     By colorRadioButton = By.xpath("//*[@id=\"bcpo-select-option-1\"]/div[3]/label");
     public void selectColor(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(colorRadioButton));
         driver.findElement(colorRadioButton).click();
     }
 
